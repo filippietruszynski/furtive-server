@@ -1,2 +1,5 @@
-# furtive-server
-Server side of Furtive - JavaScript instant messaging service.
+# Furtive
+
+Repository contains server side of Furtive - JavaScript instant messaging service.
+
+The work is in progress!
