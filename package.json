@@ -5,13 +5,13 @@
   "main": "build/index.js",
   "private": true,
   "scripts": {
-    "build": "babel src --out-dir build --extensions \".ts\"",
-    "clean": "rimraf build",
-    "start": "node build/index.js --trace-warnings",
+    "build": "babel src/ --out-dir build/ --extensions \".ts\"",
+    "clean": "rimraf build/",
+    "start": "node --require dotenv/config build/index.js --trace-warnings",
     "restart": "npm run clean && npm run build && npm run start",
     "dev": "nodemon --exec npm run restart",
     "test": "jest --forceExit --detectOpenHandles --silent",
-    "lint": "npx eslint src/**/* --fix"
+    "lint": "npx eslint src/ --fix"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

@@ -1,27 +1,24 @@
 import { merge } from "lodash";
 
-import devConfig from "./dev";
+import devConfig from "./development";
 import testConfig from "./testing";
+
+import { IBaseConfig, IConfig, IEnvConfig } from "./types";
 
 const env = process.env.NODE_ENV || "development";
 
-const baseConfig = {
+const baseConfig: IBaseConfig = {
   env,
   isDev: env === "development",
   isTest: env === "testing",
-  secrets: {
-    jwtExp: "100d",
-  },
 };
 
-let envConfig;
+let envConfig: IEnvConfig;
 
 switch (env) {
-  case "dev":
   case "development":
     envConfig = devConfig;
     break;
-  case "test":
   case "testing":
     envConfig = testConfig;
     break;
@@ -29,4 +26,6 @@ switch (env) {
     envConfig = devConfig;
 }
 
-export default merge(baseConfig, envConfig);
+const config: IConfig = merge(baseConfig, envConfig);
+
+export default config;

@@ -1,3 +1,5 @@
+import config from "./config";
+
 export const start = () => {
-  console.log("Server has started");
+  console.log(config);
 };
