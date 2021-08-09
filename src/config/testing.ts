@@ -1,13 +1,17 @@
-const testConfig = {
+import { IEnvConfig } from "./types";
+
+const testConfig: IEnvConfig = {
   app: {
-    port: process.env.TEST_APP_PORT || 3000,
+    host: process.env.TEST_APP_HOST || "localhost",
+    port: parseInt(<string>process.env.TEST_APP_PORT, 10) || 3000,
   },
   secrets: {
     jwt: process.env.TEST_JWT_SECRET || "nulladiessinelinea",
+    jwtExp: process.env.TEST_JWT_EXP || "100d",
   },
-  db: {
+  database: {
     host: process.env.TEST_DB_HOST || "localhost",
-    port: process.env.TEST_DB_PORT || 27017,
+    port: parseInt(<string>process.env.TEST_DB_PORT, 10) || 27017,
     name: process.env.TEST_DB_NAME || "furtive-test",
   },
 };
