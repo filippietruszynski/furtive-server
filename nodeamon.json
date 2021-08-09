@@ -1,6 +1,21 @@
 {
-  "ext": "ts",
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    ".idea",
+    "node_modules/**/node_modules",
+    "dist"
+  ],
+  "verbose": true,
+  "execMap": {
+    "js": "node"
+  },
+  "runOnChangeOnly": false,
   "watch": [
-    "src"
-  ]
+    "src/**/*.ts"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js,ts,json"
 }
