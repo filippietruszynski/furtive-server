@@ -4,15 +4,13 @@
   "description": "Server side of Furtive - JavaScript instant messaging service.",
   "main": "build/index.js",
   "private": true,
-  "author": "Filip Pietruszyński <filippietruszynski@pm.me>",
-  "license": "AGPL-3.0",
   "scripts": {
     "build": "babel src --out-dir build --extensions \".ts\"",
     "clean": "rimraf build",
     "start": "node build/index.js --trace-warnings",
     "restart": "npm run clean && npm run build && npm run start",
     "dev": "nodemon --exec npm run restart",
-    "test": "jest --forceExit --detectOpenHandles  --silent",
+    "test": "jest --forceExit --detectOpenHandles --silent",
     "lint": "npx eslint src/**/* --fix"
   },
   "dependencies": {
@@ -29,6 +27,8 @@
   "devDependencies": {
     "@babel/cli": "^7.14.8",
     "@babel/core": "^7.15.0",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
     "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-typescript": "^7.15.0",
@@ -41,7 +41,7 @@
     "@types/lodash": "^4.14.172",
     "@types/node": "^12.20.19",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
-    "@typescript-eslint/parser": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.1",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
@@ -60,5 +60,7 @@
       "build/"
     ],
     "restoreMocks": true
-  }
+  },
+  "author": "Filip Pietruszyński <filippietruszynski@pm.me>",
+  "license": "AGPL-3.0"
 }

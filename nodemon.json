@@ -4,11 +4,11 @@
     ".git",
     ".idea",
     "node_modules/**/node_modules",
-    "dist"
+    "build"
   ],
   "verbose": true,
   "execMap": {
-    "js": "node"
+    "ts": "node"
   },
   "runOnChangeOnly": false,
   "watch": [

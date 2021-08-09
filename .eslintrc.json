@@ -12,7 +12,20 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
-  },
-  "settings": {
+    "sort-imports": [
+      "warn",
+      {
+        "ignoreCase": false,
+        "ignoreDeclarationSort": false,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": [
+          "all",
+          "single",
+          "multiple",
+          "none"
+        ],
+        "allowSeparatedGroups": true
+      }
+    ]
   }
 }
