@@ -1,7 +1,7 @@
 {
   "name": "furtive-server",
   "version": "1.0.0",
-  "description": "Server side of Furtive - JavaScript instant messaging service.",
+  "description": "Server side of Furtive - JavaScript instant messaging service",
   "main": "build/index.js",
   "private": true,
   "scripts": {
