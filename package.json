@@ -64,5 +64,5 @@
     "restoreMocks": true
   },
   "author": "Filip Pietruszyński <filippietruszynski@pm.me>",
-  "license": "AGPL-3.0"
+  "license": "MIT"
 }
