@@ -1,7 +1,7 @@
-import express from "express";
-import { json, urlencoded } from "body-parser";
-import morgan from "morgan";
 import cors from "cors";
+import express from "express";
+import morgan from "morgan";
+import { json, urlencoded } from "body-parser";
 
 import config from "./config";
 
