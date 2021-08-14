@@ -1,7 +1,8 @@
 # Furtive
+## Server side
 
 > "Nulla dies sine linea" ~ Gaius Plinius Secundus
 
-Repository contains server side of Furtive - JavaScript instant messaging service.
+Furtive is a javascript based instant messenger service, which ultimately will be e2e encrypted and cross-platform distributed.
 
 The work is in progress!
