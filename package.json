@@ -9,7 +9,7 @@
     "clean": "rimraf build/",
     "start": "node --require dotenv/config build/index.js --trace-warnings",
     "restart": "npm run clean && npm run build && npm run start",
-    "dev": "nodemon --exec npm run restart",
+    "start:dev": "nodemon --exec npm run restart",
     "test": "jest --forceExit --detectOpenHandles --silent",
     "type-check": "tsc --noEmit",
     "lint": "npx eslint src/",
