@@ -3,7 +3,7 @@ import { IEnvConfig } from "./types";
 const devConfig: IEnvConfig = {
   app: {
     host: process.env.DEV_APP_HOST || "localhost",
-    port: parseInt(<string>process.env.DEV_APP_PORT, 10) || 3000,
+    port: parseInt(<string>process.env.DEV_APP_PORT, 10) || 5000,
   },
   secrets: {
     jwt: process.env.DEV_JWT_SECRET || "nulladiessinelinea",
