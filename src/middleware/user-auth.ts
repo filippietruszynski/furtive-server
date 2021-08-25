@@ -5,7 +5,7 @@ import { User } from "../models/user-model";
 
 import config from "../config";
 
-export const newToken = (user) => {
+export const newToken = (user: any) => {
   return jwt.sign({ id: user.id }, config.secrets.jwt, {
     expiresIn: config.secrets.jwtExp,
   });
@@ -19,8 +19,8 @@ export const verifyToken = (token: string) =>
     });
   });
 
-export const signup = async (req, res) => {
-  console.log("SIGNUP SIĘ ODPALIŁ");
+export const register = async (req: any, res: any) => {
+  console.log("REGISTER SIĘ ODPALIŁ");
   if (!req.body.email || !req.body.password) {
     return res
       .status(400)
@@ -36,7 +36,7 @@ export const signup = async (req, res) => {
   }
 };
 
-export const login = async (req, res) => {
+export const login = async (req: any, res: any) => {
   console.log("LOGIN SIĘ ODPALIŁ");
 
   if (!req.body.email || !req.body.password) {
@@ -70,7 +70,7 @@ export const login = async (req, res) => {
   }
 };
 
-export const protect = async (req, res, next) => {
+export const protect = async (req: any, res: any, next: any) => {
   console.log("PROTECT SIĘ ODPALIŁ");
   const bearer = req.headers.authorization;
 
@@ -79,7 +79,7 @@ export const protect = async (req, res, next) => {
   }
 
   const token = bearer.split("Bearer ")[1].trim();
-  let payload;
+  let payload: any;
   try {
     payload = await verifyToken(token);
   } catch (e) {

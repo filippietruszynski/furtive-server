@@ -5,7 +5,7 @@ import { json, urlencoded } from "body-parser";
 
 import config from "./config";
 import { connect } from "./database/database";
-import { login, protect, signup } from "./middleware/user-auth";
+import { login, protect, register } from "./middleware/user-auth";
 
 export const app = express();
 
@@ -16,8 +16,9 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
-app.post("/signup", signup);
+app.post("/register", register);
 app.post("/login", login);
+// app.post("/logout", logout);
 
 app.use("/api", protect);
 
