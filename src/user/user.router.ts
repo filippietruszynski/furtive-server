@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { me, updateMe } from "../controllers/user-controllers";
+import { me, updateMe } from "./user.controllers";
 
 const router = Router();
 

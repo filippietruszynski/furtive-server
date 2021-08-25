@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-import { IUserModel } from "../models/types";
+import { IUserModel } from "../user/types";
 
-import { User } from "../models/user-model";
+import { User } from "../user/user.model";
 
 import config from "../config";
 

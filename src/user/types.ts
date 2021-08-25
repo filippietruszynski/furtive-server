@@ -9,5 +9,5 @@ export interface IUserDocument extends IUser, Document {
   checkPassword: (password: string) => Promise<boolean>;
 }
 
-/* In case of potential statics change IUserModel to interface. */
+/* In case of potential STATICS change IUserModel to interface. */
 export type IUserModel = Model<IUserDocument>;

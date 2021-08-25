@@ -4,7 +4,9 @@ import morgan from "morgan";
 import { json, urlencoded } from "body-parser";
 
 import config from "./config";
+
 import { connect } from "./database/database";
+import userRouter from "./user/user.router";
 import { login, protect, register } from "./middleware/user-auth";
 
 export const app = express();
@@ -21,6 +23,7 @@ app.post("/login", login);
 // app.post("/logout", logout);
 
 app.use("/api", protect);
+app.use("/api/user", userRouter);
 
 export const start = async () => {
   try {
