@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-import { IUserModel } from "../user/types";
 
 import { User } from "../user/user.model";
 
@@ -13,14 +12,14 @@ export const newToken = (user: any) => {
 
 export const verifyToken = (token: string) =>
   new Promise((resolve, reject) => {
-    jwt.verify(token, config.secrets.jwt, (err, payload) => {
-      if (err) return reject(err);
+    jwt.verify(token, config.secrets.jwt, (error, payload) => {
+      if (error) return reject(error);
       resolve(payload);
     });
   });
 
-export const register = async (req: any, res: any) => {
-  console.log("REGISTER SIĘ ODPALIŁ");
+export const signUpUser = async (req: any, res: any) => {
+  console.log("SIGNUP SIĘ ODPALIŁ");
   if (!req.body.email || !req.body.password) {
     return res
       .status(400)
@@ -30,13 +29,15 @@ export const register = async (req: any, res: any) => {
   try {
     const user = await User.create(req.body);
     const token = newToken(user);
+    console.log(`email: ${req.body.email}, password: ${req.body.password}`);
     return res.status(201).send({ token });
-  } catch (e) {
+  } catch (error) {
+    console.error(error);
     return res.status(500).end();
   }
 };
 
-export const login = async (req: any, res: any) => {
+export const logInUser = async (req: any, res: any) => {
   console.log("LOGIN SIĘ ODPALIŁ");
 
   if (!req.body.email || !req.body.password) {
@@ -64,13 +65,13 @@ export const login = async (req: any, res: any) => {
 
     const token = newToken(user);
     return res.status(201).send({ token });
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     res.status(500).end();
   }
 };
 
-export const protect = async (req: any, res: any, next: any) => {
+export const protectRoutes = async (req: any, res: any, next: any) => {
   console.log("PROTECT SIĘ ODPALIŁ");
   const bearer = req.headers.authorization;
 
@@ -82,7 +83,7 @@ export const protect = async (req: any, res: any, next: any) => {
   let payload: any;
   try {
     payload = await verifyToken(token);
-  } catch (e) {
+  } catch (error) {
     return res.status(401).end();
   }
 

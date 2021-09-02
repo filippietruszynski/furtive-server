@@ -3,11 +3,11 @@ import express from "express";
 import morgan from "morgan";
 import { json, urlencoded } from "body-parser";
 
-import config from "./config";
-
 import { connect } from "./database/database";
 import userRouter from "./user/user.router";
-import { login, protect, register } from "./middleware/user-auth";
+import { logInUser, protectRoutes, signUpUser } from "./auth/auth.services";
+
+import config from "./config";
 
 export const app = express();
 
@@ -18,11 +18,10 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
-app.post("/register", register);
-app.post("/login", login);
-// app.post("/logout", logout);
+app.post("/signup", signUpUser);
+app.post("/login", logInUser);
 
-app.use("/api", protect);
+app.use("/api", protectRoutes);
 app.use("/api/user", userRouter);
 
 export const start = async () => {
@@ -30,10 +29,10 @@ export const start = async () => {
     await connect();
     app.listen(config.app.port, () => {
       console.log(
-        `Server listens on http://${config.app.host}:${config.app.port}/api`
+        `Server listens on http://${config.app.host}:${config.app.port}/`
       );
     });
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
   }
 };

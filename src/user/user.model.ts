@@ -24,9 +24,9 @@ userSchema.pre("save", function (next) {
     return next();
   }
 
-  bcrypt.hash(this.password, 8, (err, hash) => {
-    if (err) {
-      return next(err);
+  bcrypt.hash(this.password, 8, (error, hash) => {
+    if (error) {
+      return next(error);
     }
 
     this.password = hash;
@@ -37,9 +37,9 @@ userSchema.pre("save", function (next) {
 userSchema.methods.checkPassword = function (password) {
   const passwordHash = this.password;
   return new Promise((resolve, reject) => {
-    bcrypt.compare(password, passwordHash, (err, same) => {
-      if (err) {
-        return reject(err);
+    bcrypt.compare(password, passwordHash, (error, same) => {
+      if (error) {
+        return reject(error);
       }
       resolve(same);
     });
