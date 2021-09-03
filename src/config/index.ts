@@ -11,6 +11,7 @@ const baseConfig: IBaseConfig = {
   env,
   isDev: env === "development",
   isTest: env === "testing",
+  isProd: env === "production",
 };
 
 let envConfig: IEnvConfig;
@@ -22,8 +23,12 @@ switch (env) {
   case "testing":
     envConfig = testConfig;
     break;
+  case "production":
+    envConfig = testConfig;
+    break;
   default:
     envConfig = devConfig;
+    console.log(`NODE_ENV wasn't declared! Using DEVELOPMENT config.`);
 }
 
 const config: IConfig = merge(baseConfig, envConfig);
