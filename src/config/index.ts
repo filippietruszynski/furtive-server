@@ -2,6 +2,7 @@ import { merge } from "lodash";
 
 import devConfig from "./development";
 import testConfig from "./testing";
+import prodConfig from "./production";
 
 import { IBaseConfig, IConfig, IEnvConfig } from "./types";
 
@@ -24,11 +25,11 @@ switch (env) {
     envConfig = testConfig;
     break;
   case "production":
-    envConfig = testConfig;
+    envConfig = prodConfig;
     break;
   default:
     envConfig = devConfig;
-    console.log(`NODE_ENV wasn't declared! Using DEVELOPMENT config.`);
+    console.log(`NODE_ENV wasn't declared! Using DEVELOPMENT config!`);
 }
 
 const config: IConfig = merge(baseConfig, envConfig);
