@@ -3,9 +3,10 @@ import express from "express";
 import morgan from "morgan";
 import { json, urlencoded } from "body-parser";
 
-import { connect } from "./database/database";
-import userRouter from "./user/user.router";
-import { logInUser, protectRoutes, signUpUser } from "./auth/auth.services";
+import { logInUser, signUpUser } from "./api/auth/auth.controllers";
+import { protectRoutes } from "./api/auth/auth.middleware";
+import { connect } from "./db/database";
+import userRouter from "./api/user/user.router";
 
 import config from "./config";
 

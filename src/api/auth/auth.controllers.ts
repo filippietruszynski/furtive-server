@@ -1,25 +1,8 @@
-import jwt from "jsonwebtoken";
-
 import { User } from "../user/user.model";
 
-import config from "../config";
-
-export const newToken = (user: any) => {
-  return jwt.sign({ id: user.id }, config.secrets.jwt, {
-    expiresIn: config.secrets.jwtExp,
-  });
-};
-
-export const verifyToken = (token: string) =>
-  new Promise((resolve, reject) => {
-    jwt.verify(token, config.secrets.jwt, (error, payload) => {
-      if (error) return reject(error);
-      resolve(payload);
-    });
-  });
+import { newToken } from "../../utils/jwt";
 
 export const signUpUser = async (req: any, res: any) => {
-  console.log("SIGNUP SIĘ ODPALIŁ");
   if (!req.body.email || !req.body.password) {
     return res
       .status(400)
@@ -36,8 +19,6 @@ export const signUpUser = async (req: any, res: any) => {
 };
 
 export const logInUser = async (req: any, res: any) => {
-  console.log("LOGIN SIĘ ODPALIŁ");
-
   if (!req.body.email || !req.body.password) {
     return res
       .status(400)
@@ -67,33 +48,4 @@ export const logInUser = async (req: any, res: any) => {
     console.error(error);
     res.status(500).end();
   }
-};
-
-export const protectRoutes = async (req: any, res: any, next: any) => {
-  console.log("PROTECT SIĘ ODPALIŁ");
-  const bearer = req.headers.authorization;
-
-  if (!bearer || !bearer.startsWith("Bearer ")) {
-    return res.status(401).end();
-  }
-
-  const token = bearer.split("Bearer ")[1].trim();
-  let payload: any;
-  try {
-    payload = await verifyToken(token);
-  } catch (error) {
-    return res.status(401).end();
-  }
-
-  const user = await User.findById(payload.id)
-    .select("-password")
-    .lean()
-    .exec();
-
-  if (!user) {
-    return res.status(401).end();
-  }
-
-  req.user = user;
-  next();
 };
