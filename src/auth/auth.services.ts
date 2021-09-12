@@ -28,9 +28,7 @@ export const signUpUser = async (req: any, res: any) => {
 
   try {
     const user = await User.create(req.body);
-    const token = newToken(user);
-    console.log(`email: ${req.body.email}, password: ${req.body.password}`);
-    return res.status(201).send({ token });
+    return res.status(201).end();
   } catch (error) {
     console.error(error);
     return res.status(500).end();
@@ -64,7 +62,7 @@ export const logInUser = async (req: any, res: any) => {
     }
 
     const token = newToken(user);
-    return res.status(201).send({ token });
+    return res.status(200).send({ email: req.body.email, token: token });
   } catch (error) {
     console.error(error);
     res.status(500).end();
