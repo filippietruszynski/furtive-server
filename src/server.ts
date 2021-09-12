@@ -5,7 +5,7 @@ import { json, urlencoded } from "body-parser";
 
 import { logInUser, signUpUser } from "./api/auth/auth.controllers";
 import { protectRoutes } from "./api/auth/auth.middleware";
-import { connect } from "./db/database";
+import { connect } from "./database/database";
 import userRouter from "./api/user/user.router";
 
 import config from "./config";
