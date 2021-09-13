@@ -2,17 +2,17 @@ import { IEnvConfig } from "./types";
 
 const prodConfig: IEnvConfig = {
   app: {
-    host: process.env.PROD_APP_HOST || "localhost",
-    port: parseInt(<string>process.env.PROD_APP_PORT, 10) || 5000,
+    host: process.env.PROD_APP_HOST || "",
+    port: parseInt(<string>process.env.PROD_APP_PORT, 10) || -0,
   },
   secrets: {
-    jwt: process.env.PROD_JWT_SECRET || "nulladiessinelinea",
-    jwtExp: process.env.PROD_JWT_EXP || "100d",
+    jwt: process.env.PROD_JWT_SECRET || "",
+    jwtExp: process.env.PROD_JWT_EXP || "",
   },
   database: {
-    host: process.env.PROD_DB_HOST || "localhost",
-    port: parseInt(<string>process.env.PROD_DB_PORT, 10) || 27017,
-    name: process.env.PROD_DB_NAME || "furtive-prod",
+    host: process.env.PROD_DB_HOST || "",
+    port: parseInt(<string>process.env.PROD_DB_PORT, 10) || -0,
+    name: process.env.PROD_DB_NAME || "",
   },
 };
 

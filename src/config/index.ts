@@ -1,7 +1,6 @@
-import { merge } from "lodash";
-
 import devConfig from "./development";
 import testConfig from "./testing";
+import stageConfig from "./staging";
 import prodConfig from "./production";
 
 import { IBaseConfig, IConfig, IEnvConfig } from "./types";
@@ -12,6 +11,7 @@ const baseConfig: IBaseConfig = {
   env,
   isDev: env === "development",
   isTest: env === "testing",
+  isStage: env === "staging",
   isProd: env === "production",
 };
 
@@ -24,14 +24,16 @@ switch (env) {
   case "testing":
     envConfig = testConfig;
     break;
+  case "staging":
+    envConfig = stageConfig;
+    break;
   case "production":
     envConfig = prodConfig;
     break;
   default:
     envConfig = devConfig;
-    console.log(`NODE_ENV wasn't declared! Using DEVELOPMENT config!`);
 }
 
-const config: IConfig = merge(baseConfig, envConfig);
+const config: IConfig = { ...baseConfig, ...envConfig };
 
 export default config;

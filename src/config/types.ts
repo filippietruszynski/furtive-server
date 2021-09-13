@@ -18,6 +18,7 @@ export interface IBaseConfig {
   env: string;
   isDev: boolean;
   isTest: boolean;
+  isStage: boolean;
   isProd: boolean;
 }
 
