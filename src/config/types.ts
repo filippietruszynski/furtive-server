@@ -1,17 +1,17 @@
 interface IApp {
-  host: string;
-  port: number;
+  host?: string;
+  port?: number;
 }
 
 interface ISecrets {
-  jwt: string;
-  jwtExp: string;
+  jwt?: string;
+  jwtExp?: string;
 }
 
 interface IDatabase {
-  host: string;
-  port: number;
-  name: string;
+  host?: string;
+  port?: number;
+  name?: string;
 }
 
 export interface IBaseConfig {
