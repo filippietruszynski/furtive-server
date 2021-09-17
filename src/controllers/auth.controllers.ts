@@ -1,6 +1,6 @@
-import { User } from "../user/user.model";
+import { User } from "../models/user.model";
 
-import { newToken } from "../../utils/jwt";
+import { newToken } from "../utils/jwt";
 
 export const signUpUser = async (req: any, res: any) => {
   if (!req.body.email || !req.body.password) {

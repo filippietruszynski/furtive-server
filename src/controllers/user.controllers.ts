@@ -1,4 +1,4 @@
-import { User } from "./user.model";
+import { User } from "../models/user.model";
 
 export const user = (req: any, res: any) => {
   console.log(req.user);

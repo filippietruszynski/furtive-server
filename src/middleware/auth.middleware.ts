@@ -1,6 +1,6 @@
-import { User } from "../user/user.model";
+import { User } from "../models/user.model";
 
-import { verifyToken } from "../../utils/jwt";
+import { verifyToken } from "../utils/jwt";
 
 export const protectRoutes = async (req: any, res: any, next: any) => {
   const bearer = req.headers.authorization;
