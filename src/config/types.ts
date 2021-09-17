@@ -9,12 +9,14 @@ export interface IProcessEnv {
 interface IApp {
   host: string;
   port: number;
+  hasPort: boolean;
 }
 
 interface IDatabase {
   host: string;
   port: number;
   name: string;
+  hasPort: boolean;
 }
 
 interface ISecrets {
