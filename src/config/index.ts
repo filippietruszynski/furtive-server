@@ -1,37 +1,35 @@
-import devConfig from "./development";
-import testConfig from "./testing";
-import stageConfig from "./staging";
-import prodConfig from "./production";
+import envConfigs from "./env-configs";
 
-import { IBaseConfig, IConfig, IEnvConfig } from "./types";
+import { IBaseConfig, IConfig, IEnvConfig, IProcessEnv } from "./types";
 
-const env = process.env.NODE_ENV || "development";
+const processEnv: IProcessEnv = process.env;
+const nodeEnv: string = processEnv.NODE_ENV || "development";
 
 const baseConfig: IBaseConfig = {
-  env,
-  isDev: env === "development",
-  isTest: env === "testing",
-  isStage: env === "staging",
-  isProd: env === "production",
+  nodeEnv,
+  isDev: nodeEnv === "development",
+  isTest: nodeEnv === "testing",
+  isStage: nodeEnv === "staging",
+  isProd: nodeEnv === "production",
 };
 
 let envConfig: IEnvConfig;
 
-switch (env) {
+switch (nodeEnv) {
   case "development":
-    envConfig = devConfig;
+    envConfig = envConfigs.devConfig(processEnv);
     break;
   case "testing":
-    envConfig = testConfig;
+    envConfig = envConfigs.testConfig(processEnv);
     break;
   case "staging":
-    envConfig = stageConfig;
+    envConfig = envConfigs.stageConfig(processEnv);
     break;
   case "production":
-    envConfig = prodConfig;
+    envConfig = envConfigs.prodConfig(processEnv);
     break;
   default:
-    envConfig = devConfig;
+    envConfig = envConfigs.devConfig(processEnv);
 }
 
 const config: IConfig = { ...baseConfig, ...envConfig };

@@ -1,21 +1,29 @@
-interface IApp {
-  host?: string;
-  port?: number;
+/* PROCESS */
+
+export interface IProcessEnv {
+  [key: string]: string | undefined;
 }
 
-interface ISecrets {
-  jwt?: string;
-  jwtExp?: string;
+/* CONFIG */
+
+interface IApp {
+  host: string;
+  port: number;
 }
 
 interface IDatabase {
-  host?: string;
-  port?: number;
-  name?: string;
+  host: string;
+  port: number;
+  name: string;
+}
+
+interface ISecrets {
+  token: string;
+  tokenExp: string;
 }
 
 export interface IBaseConfig {
-  env: string;
+  nodeEnv: string;
   isDev: boolean;
   isTest: boolean;
   isStage: boolean;
@@ -24,8 +32,8 @@ export interface IBaseConfig {
 
 export interface IEnvConfig {
   app: IApp;
-  secrets: ISecrets;
   database: IDatabase;
+  secrets: ISecrets;
 }
 
 export interface IConfig extends IBaseConfig, IEnvConfig {}
