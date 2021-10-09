@@ -5,10 +5,10 @@
   "main": "build/index.js",
   "private": true,
   "scripts": {
-    "build": "babel src/ --out-dir build/ --extensions \".ts\"",
     "clean": "rimraf build/",
+    "build": "npm run clean && babel src/ --out-dir build/ --extensions \".ts\"",
     "start": "node --require dotenv/config build/index.js --trace-warnings",
-    "restart": "npm run clean && npm run build && npm run start",
+    "restart": "npm run build && npm run start",
     "start:dev": "nodemon --exec npm run restart",
     "test": "jest --forceExit --detectOpenHandles --silent",
     "type-check": "tsc --noEmit",
