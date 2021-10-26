@@ -7,5 +7,3 @@
 Furtive is a javascript based instant messenger service, which ultimately will be quasi-e2e encrypted and distributed as PWA.
 
 The work is in progress!
-
-Next step: Implement signup & login
